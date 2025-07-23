@@ -39,6 +39,7 @@ Kaynak Monitörü'nü açın: Başlat menüsüne %windir%\system32\perfmon.exe /
 Ağ kısmına geçin: Kaynak Monitörü'nde "Ağ" sekmesine gidin.
 
 Discord'u bulun: Burada Discord uygulamasını bulun. "Adres" kısmında bağlanmaya çalıştığı IP adreslerini göreceksiniz.
+![alt text](s1.jpj "ekran görüntüsü")
 
 3) IP Adreslerini VPN'e Yönlendirme
 Kaynak Monitörü'nde bulduğunuz IP adreslerini VPN bağlantınız üzerinden yönlendirmek için `netsh` komutunu kullanacağız. Her bir IP adresi için aşağıdaki komutu uygulayın:
