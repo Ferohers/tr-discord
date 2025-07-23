@@ -60,6 +60,7 @@ netsh interface ipv4 add route 162.159.135.0/24 "benim-vpn-ismim"
 netsh interface ipv4 add route 162.159.133.0/24 "benim-vpn-ismim"
 netsh interface ipv4 add route 142.250.187.0/24 "benim-vpn-ismim"
 ```
+IP adresi 162.159.136.234 ama sen sonu 0./24 lü bir şey yazmışın? Evet 0/24 ilgili tüm bloğu VPN'e ekler yani 255 tane adresi VPN'e yönlendirir böylece aynı blokta 20 tane IP adresini eklemeniz gerekmez.
 
 Not: IPsec, IKEv2 vb. modern VPN protokollerinde bir sorun yaşamazsınız. Çok eski teknolojilerde küçük bir sıkıntı yaşama şansınız olabilir.
 
