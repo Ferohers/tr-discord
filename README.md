@@ -1,45 +1,55 @@
-# tr-discord
 
-Evet ilk kez türkçe bir şey yazıyorum Github üzerinde. Çünkü Türkiye ve Rusya haricinde ihtiyacı olan adam pek çıkmayacak.
+tr-discord
+Evet, ilk kez GitHub üzerinde Türkçe bir şey yazıyorum. Çünkü Türkiye ve Rusya haricinde ihtiyacı olan pek çıkmayacak.
 
-Ne yapmaya çalışıyoruz ?
-Belirli bir programın farklı bir yoldan ilerleyerek vpn üzerinden bağlanmasını sağlıyoruz.
+Ne yapmaya çalışıyoruz?
+Belirli bir programın (örneğin Discord) farklı bir yoldan ilerleyerek VPN üzerinden bağlanmasını sağlıyoruz. Bu sayede sadece belirlediğiniz uygulamaların trafiği VPN üzerinden geçerken, diğer internet trafiğiniz doğrudan bağlantınızı kullanır.
 
-Peki neden normal bir VPN ile bağlanmıyoruz da senin bu zımbırtı ile uğraşıyoruz?
-Ör: Discord'a erişim VPN'den 70-80ms ile olurken siz 20-30ms ile oyununuzu oynaybiliyorsunuz.
+Neden normal bir VPN ile bağlanmıyoruz da bu yöntemle uğraşıyoruz?
+Örneğin, Discord'a normal bir VPN ile erişim 70-80ms gecikme ile olurken, bu yöntemle 20-30ms gibi daha düşük gecikmelerle oyununuzu oynayabilirsiniz. Bu, özellikle düşük ping gerektiren uygulamalar için büyük bir avantaj sağlar.
 
-Neye ihtiyaç var ?
-Bir VPN'e ihtiyacınız olacak. Kendinizin kurması çok daha mantıklı olur. 
+Neye ihtiyaç var?
+Bir VPN'e ihtiyacınız olacak. Kendi VPN sunucunuzu kurmanız çok daha mantıklı ve güvenli olacaktır.
 
-Bir VPN kurulumu içinde repomuz var. Az çok server bilginiz var ise bir kaç komutla hazır hale getirebilirsiniz kendi vpn serverınızı.
+VPN Kurulumu: Kendi VPN sunucunuzu kurmak için bir repomuz mevcut. Temel server bilginiz varsa, birkaç komutla kendi VPN sunucunuzu hazır hale getirebilirsiniz.
 
-Başlayalım. 
+Başlayalım!
+1) VPN'iniz hazır! Ama komple bağlantınız oradan geçiyor. Bunu sonlandıralım.
+VPN bağlantınızın tüm internet trafiğinizi yönlendirmesini engellemek için "Split Tunneling" özelliğini etkinleştirmemiz gerekiyor.
 
-1)VPNimiz hazır! Ama komple bağlantınız oradan geçiyor. Bunu sonlandıralım.
-https://www.youtube.com/watch?v=S5XCOS-il3c
+Bunun için PowerShell'i yönetici olarak açın ve aşağıdaki komutu tırnak işaretleriyle birlikte yazın:
 
-veya powershelle (admin olarka) şunu yazın tırnaklar ile. Komut ile daha kolay
+PowerShell
 
-Type Set-VpnConnection -Name "VPN İSMİNİZ" -SplitTunneling $True
-ör: Type Set-VpnConnection -Name "benim-vpn" -SplitTunneling $True
+Set-VpnConnection -Name "VPN İSMİNİZ" -SplitTunneling $True
+Örnek:
 
-Evet şimdi bir VPN'niniz var bağlanıyorsunuz ama hiçbir data buradan geçmiyor. 
+PowerShell
+
+Set-VpnConnection -Name "benim-vpn" -SplitTunneling $True
+Bu adımı tamamladığınızda, VPN'inize bağlanacaksınız ancak hiçbir veri varsayılan olarak bu bağlantı üzerinden geçmeyecek.
+
+Ek Bilgi: Bu adımın görsel bir anlatımı için Windows 11'de VPN Split Tunneling Kurulumu videosuna göz atabilirsiniz.
 
 2) Geçmesi gereken IP'leri bulup ekleme
-Resourse monitör (kaynak monitörü) açın. Bunu yazıp entera basarsanız açılır başlata.
+Şimdi Discord gibi belirli uygulamaların VPN üzerinden geçmesini istediğiniz IP adreslerini bulup eklememiz gerekiyor.
 
-%windir%\system32\perfmon.exe /res
+Kaynak Monitörü'nü açın: Başlat menüsüne %windir%\system32\perfmon.exe /res yazıp Enter'a basarak Kaynak Monitörü'nü açın.
 
-Network (Ağ) kısmına geçin ve buradan Discord'u bulun. 
-Adres kısmında bağlanmaya çalıştığı IP'leri göreceksiniz.
+Ağ kısmına geçin: Kaynak Monitörü'nde "Ağ" sekmesine gidin.
 
-![alt text](s1.jpg "kendi ekranım")
+Discord'u bulun: Burada Discord uygulamasını bulun. "Adres" kısmında bağlanmaya çalıştığı IP adreslerini göreceksiniz.
 
-  
-3) netsh interface ipv4 add route x.x.x.0/24 "benim-vpn-ismim"
-Komutu ile Discord'un kaynak yönetiminde çıkan IP'lerini ekliyoruz.
-   
+3) IP adreslerini VPN'e yönlendirme
+Kaynak Monitörü'nde bulduğunuz IP adreslerini VPN bağlantınız üzerinden yönlendirmek için netsh komutunu kullanacağız. Her bir IP adresi için aşağıdaki komutu uygulayın:
+
+Bash
+
+netsh interface ipv4 add route x.x.x.0/24 "benim-vpn-ismim"
 Sıra ile benim görüp bulduklarım:
+
+Bash
+
 netsh interface ipv4 add route 172.217.20.0/24 "benim-vpn-ismim"
 netsh interface ipv4 add route 162.159.134.0/24 "benim-vpn-ismim"
 netsh interface ipv4 add route 162.159.128.0/24 "benim-vpn-ismim"
@@ -48,13 +58,9 @@ netsh interface ipv4 add route 162.159.137.0/24 "benim-vpn-ismim"
 netsh interface ipv4 add route 162.159.135.0/24 "benim-vpn-ismim"
 netsh interface ipv4 add route 162.159.133.0/24 "benim-vpn-ismim"
 netsh interface ipv4 add route 142.250.187.0/24 "benim-vpn-ismim"
+Not: IPsec, IKEv2 vb. modern VPN protokollerinde bir sorun yaşamazsınız. Çok eski teknolojilerde küçük bir sıkıntı yaşama şansınız olabilir.
 
-Not: IPsec, Ikev2 vb modern araçlarda bir sorun yaşamazsınız. Çok eski teknolojilerde bir sıkıntı yaşama şansınız azda olsa var.
-Peki neden BypassDPI benzeri bir şey kullanmıyoruz? 
-3. şahısların tüm kodunu anlayamadığımız yazılımları kullanmak kendi içinde sakıncalı.
-Bu yazılımların kim tarafından yapıldığı ve/veya uluslararası adaptasyonunun olmaması daha korkutucu.
-Halen erişimi kısıtlı noktalara yasal olmayacak şekilde ulaşmakta bir sorun. 
-VPN istediğiniz veriyi bu erişimin yasal olduğu noktadan veriyi alıp size taşımaktadır. Paylaşımsız bir VPN ile verileriniz tam güvenlidir.
+Peki neden BypassDPI benzeri bir şey kullanmıyoruz?
+Güvenlik Riskleri: Üçüncü şahısların tüm kodunu anlayamadığımız yazılımları kullanmak kendi içinde sakıncalıdır. Bu yazılımların kim tarafından yapıldığı ve/veya uluslararası adaptasyonunun olmaması daha korkutucudur.
 
-
-
+Yasal Erişim: Halen erişimi kısıtlı noktalara yasal olmayacak şekilde ulaşmak bir sorundur. VPN, istediğiniz veriyi bu erişimin yasal olduğu noktadan alıp size taşımaktadır. Paylaşımsız bir VPN ile verileriniz tam güvenlidir.
