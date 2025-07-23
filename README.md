@@ -33,6 +33,7 @@ Resourse monitör (kaynak monitörü) açın. Bunu yazıp entera basarsanız aç
 Network (Ağ) kısmına geçin ve buradan Discord'u bulun. 
 Adres kısmında bağlanmaya çalıştığı IP'leri göreceksiniz.
 
+![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "Logo Title Text 1")
 
   
 3) netsh interface ipv4 add route x.x.x.0/24 "benim-vpn-ismim"
