@@ -6,7 +6,7 @@ Ne yapmaya çalışıyoruz ?
 Belirli bir programın farklı bir yoldan ilerleyerek vpn üzerinden bağlanmasını sağlıyoruz.
 
 Peki neden normal bir VPN ile bağlanmıyoruz da senin bu zımbırtı ile uğraşıyoruz?
-15-35 ping bağlantınızı 2 kat yavaşlatmamış olursunuz. 
+Ör: Discord'a erişim VPN'den 70-80ms ile olurken siz 20-30ms ile oyununuzu oynaybiliyorsunuz.
 
 Neye ihtiyaç var ?
 Bir VPN'e ihtiyacınız olacak. Kendinizin kurması çok daha mantıklı olur. 
