@@ -1,4 +1,3 @@
-tr-discord
 Evet, ilk kez GitHub üzerinde Türkçe bir şey yazıyorum. Çünkü Türkiye ve Rusya haricinde ihtiyacı olan pek çıkmayacak.
 
 Ne yapmaya çalışıyoruz?
