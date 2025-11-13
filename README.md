@@ -1,4 +1,4 @@
-Evet, ilk kez GitHub üzerinde Türkçe bir şey yazıyorum. Çünkü Türkiye ve Rusya haricinde ihtiyacı olan pek çıkmayacak.
+Evet, ilk kez GitHub üzerinde Türkçe bir şey yazıyorum. Çünkü Türkiye ve Rusya haricinde ihtiyacı olan pek çıkmayacak...
 
 Ne yapmaya çalışıyoruz?
 Belirli bir programın (örneğin Discord) farklı bir yoldan ilerleyerek VPN üzerinden bağlanmasını sağlıyoruz. Bu sayede sadece belirlediğiniz uygulamaların trafiği VPN üzerinden geçerken, diğer internet trafiğiniz doğrudan bağlantınızı kullanır.
