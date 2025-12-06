@@ -19,8 +19,8 @@ Bunun için PowerShell'i yönetici olarak açın ve aşağıdaki komutu tırnak 
 
 ```powershell
 Set-VpnConnection -Name "VPN İSMİNİZ" -SplitTunneling $True
-```
-
+``` 
+ 
 Örnek:
 
 ```powershell
